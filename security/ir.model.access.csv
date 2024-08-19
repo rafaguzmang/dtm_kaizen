@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_dtm_kaizen,access.dtm.kaizen,model_dtm_kaizen,base.group_user,1,1,1,1
+access_dtm_kaizen_departamento,access.dtm.kaizen.departamento,model_dtm_kaizen_departamento,base.group_user,1,1,1,1
+access_dtm_kaizen_responsable,access.dtm.kaizen.responsable,model_dtm_kaizen_responsable,base.group_user,1,1,1,1
+

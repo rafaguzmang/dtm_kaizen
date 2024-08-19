@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id = "dtm_kaizen_accion" model="ir.actions.act_window">
+            <field name="name">Mejora Continua</field>
+            <field name="res_model">dtm.kaizen</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="dtm_kaizen_tree" model="ir.ui.view">
+            <field name="name">dtm_kaizen_tree</field>
+            <field name="model">dtm.kaizen</field>
+            <field name="arch" type="xml">
+                <tree   decoration-success="cronometro > 1"
+                        decoration-warning="cronometro == 1"
+                        decoration-danger ="cronometro == 0"
+                        decoration-bf = "cronometro > -1">
+                    <field name="actividades"/>
+                    <field name="departamento_id"/>
+                    <field name="fecha_inicio" widget="date"/>
+                    <field name="fecha_compromiso" widget="date"/>
+                    <field name="indicador_impacta"/>
+                    <field name="fecha_cierre" widget="date"/>
+                    <field name="responsable_id"/>
+                    <field name="objetivo"/>
+                    <field name="nivel_accion"/>
+                    <field name="status"/>
+                    <field name="cronometro" invisible ="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="dtm_kaizen_form" model="ir.ui.view">
+            <field name="name">dtm_kaizen_form</field>
+            <field name="model">dtm.kaizen</field>
+            <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <p>
+                        Responsable
+                    </p>
+                    <h1>
+                        <field name="responsable_id"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="nivel_accion"/>
+                            <field name="fecha_inicio" widget="date"/>
+                            <field name="indicador_impacta"/>
+                        </group>
+                        <group>
+                            <field name="departamento_id"/>
+                            <field name="fecha_compromiso" widget="date"/>
+                            <field name="fecha_cierre" widget="date"/>
+                        </group>
+
+                    </group>
+                    <group>
+
+                    </group>
+                    <notebook>
+                        <page string="Actividades">
+                            <field name="actividades"/>
+                        </page>
+                        <page string="Objetivo">
+                            <field name="objetivo"/>
+                        </page>
+                        <page string="Estatus">
+                            <field name="status"/>
+                        </page>
+                        <page string="Evidencia">
+                            <field name="evidencia"/>
+                        </page>
+                        <page string="Notas">
+                            <field name="notas"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+            </field>
+        </record>
+        <menuitem id="dtm_kaizen_menu"  action="dtm_kaizen_accion"/>
+    </data>
+</odoo>
