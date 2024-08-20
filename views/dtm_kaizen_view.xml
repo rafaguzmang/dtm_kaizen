@@ -15,6 +15,7 @@
                         decoration-warning="cronometro == 1"
                         decoration-danger ="cronometro == 0"
                         decoration-bf = "cronometro > -1">
+
                     <field name="actividades"/>
                     <field name="departamento_id"/>
                     <field name="fecha_inicio" widget="date"/>

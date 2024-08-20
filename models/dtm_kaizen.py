@@ -27,7 +27,8 @@ class Kaizen(models.Model):
         get_rows = self.env['dtm.kaizen'].search([])
 
         for row in get_rows:
-            cronometro = int(row.fecha_compromiso.strftime("%j"))-int(row.fecha_inicio.strftime("%j"))
+            print(datetime.today(),datetime.today().strftime("%j"))
+            cronometro = int(row.fecha_compromiso.strftime("%j"))-int(datetime.today().strftime("%j"))
             row.write({"cronometro":cronometro})
         return  res
 
