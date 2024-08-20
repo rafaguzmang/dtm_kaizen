@@ -26,9 +26,11 @@ class Kaizen(models.Model):
         res = super(Kaizen,self).get_view(view_id, view_type,**options)
         get_rows = self.env['dtm.kaizen'].search([])
 
+
         for row in get_rows:
-            cronometro = int(row.fecha_compromiso.strftime("%j"))-int(datetime.today().strftime("%j"))
-            row.write({"cronometro":cronometro})
+            if not row.fecha_cierre:
+                cronometro = int(row.fecha_compromiso.strftime("%j"))-int(datetime.today().strftime("%j"))
+                row.write({"cronometro":cronometro})
         return  res
 
 
