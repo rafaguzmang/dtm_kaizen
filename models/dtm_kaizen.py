@@ -7,7 +7,7 @@ class Kaizen(models.Model):
 
     actividades = fields.Text(string="Actividad")
     departamento_id = fields.Many2one("dtm.kaizen.departamento", string="Área o Departamento")
-    fecha_inicio = fields.Date(string="Fecha de inicio",default=datetime.today())
+    fecha_inicio = fields.Date(string="Fecha de inicio",default=datetime.today(), readonly=True)
     fecha_compromiso = fields.Date(string="Fecha de Compromiso",default=datetime.today())
     indicador_impacta = fields.Char(string="Indicador que Impacta")
     fecha_cierre = fields.Date(string="Feche cierre real",default = datetime.today())
@@ -27,7 +27,6 @@ class Kaizen(models.Model):
         get_rows = self.env['dtm.kaizen'].search([])
 
         for row in get_rows:
-            print(datetime.today(),datetime.today().strftime("%j"))
             cronometro = int(row.fecha_compromiso.strftime("%j"))-int(datetime.today().strftime("%j"))
             row.write({"cronometro":cronometro})
         return  res
